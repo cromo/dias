@@ -1,0 +1,27 @@
+<script>
+    export let colors = {};
+    export let time = "00:00";
+    export let purpose = "";
+    let color = "unset";
+
+    $: {
+        const matches = Object.entries(colors).map(([c, p]) => ({color: c, match: purpose.match(p)})).filter(x => x.match);
+        matches.sort((a, b) => a.match.index - b.match.index);
+        color = matches.length ? matches[0].color : "unset";
+    }
+</script>
+
+<style>
+    .block {
+        width: 40px;
+        height: 40px;
+    }
+
+    .unset {
+        outline: 2px solid gray;
+    }
+</style>
+
+<div class=block class:unset={color === "unset"} style="background-color: {color}"></div>
+<div>{time}</div>
+<input bind:value={purpose}>
