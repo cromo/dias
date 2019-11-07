@@ -7,16 +7,16 @@
 		{time: new Date(+now + 20 * 60 * 1000), purpose: "debugging"},
 		{time: new Date(+now + 30 * 60 * 1000), purpose: "resting"}
 	];
-	let colors = {
-		blue: /read/i,
-		green: /writ/i,
-		red: /debug/i,
-		orange: /hn|hacker news/i,
-		gray: /work/i,
-		red: /youtube|netflix/i,
-		yellow: /shopping|amazon/i,
-		navy: /sleep|nap|rest/i
-	};
+	let colors = [
+		{color: "blue", pattern: /read/i},
+		{color: "green", pattern: /writ/i},
+		{color: "red", pattern: /debug/i},
+		{color: "orange", pattern: /hn|hacker news/i},
+		{color: "gray", pattern: /work/i},
+		{color: "red", pattern: /youtube|netflix/i},
+		{color: "yellow", pattern: /shopping|amazon/i},
+		{color: "navy", pattern: /sleep|nap|rest/i},
+	];
 </script>
 
 <style>
