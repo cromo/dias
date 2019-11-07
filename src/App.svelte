@@ -2,14 +2,7 @@
 	import TimeBlock from "./TimeBlock.svelte"
 	let palette = "creative";
 
-	const now = new Date();
-	let blocks = [
-		{time: now, purpose: "reading docs"},
-		{time: new Date(+now + 10 * 60 * 1000), purpose: "writing code"},
-		{time: new Date(+now + 20 * 60 * 1000), purpose: "debugging"},
-		{time: new Date(+now + 30 * 60 * 1000), purpose: "resting"},
-		{time: new Date(+now + 40 * 60 * 1000), purpose: "nothing"},
-	];
+	let blocks = newDay();
 	let palettes = {
 		creative: [
 			{color: "#1df", pattern: /read/i},
@@ -25,6 +18,16 @@
 			{color: "orange", pattern: /hn|hacker news|article/i},
 			{color: "green", pattern: /work|code|debug|write/i},
 		]
+	};
+
+	function newDay(startTime) {
+		startTime = startTime || Date.now();
+		return new Array(100)
+			.fill(void 0)
+			.map((_, i) => ({
+				time: new Date(+startTime + i * 10 * 60 * 1000),
+				purpose: ""
+			}));
 	}
 </script>
 
