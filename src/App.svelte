@@ -5,7 +5,8 @@
 		{time: now, purpose: "reading docs"},
 		{time: new Date(+now + 10 * 60 * 1000), purpose: "writing code"},
 		{time: new Date(+now + 20 * 60 * 1000), purpose: "debugging"},
-		{time: new Date(+now + 30 * 60 * 1000), purpose: "resting"}
+		{time: new Date(+now + 30 * 60 * 1000), purpose: "resting"},
+		{time: new Date(+now + 40 * 60 * 1000), purpose: "nothing"},
 	];
 	let colors = [
 		{color: "blue", pattern: /read/i},
@@ -29,7 +30,7 @@
 </style>
 
 <div class=grid>
-	{#each blocks as block}
-		<TimeBlock time={block.time} bind:purpose={block.purpose} {colors}/>
+	{#each blocks as {time, purpose}}
+		<TimeBlock {time} bind:purpose {colors}/>
 	{/each}
 </div>
