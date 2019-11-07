@@ -1,10 +1,11 @@
 <script>
 	import TimeBlock from "./TimeBlock.svelte"
+	const now = new Date();
 	let blocks = [
-		{time: "00:00", purpose: "reading docs"},
-		{time: "00:10", purpose: "writing code"},
-		{time: "00:20", purpose: "debugging"},
-		{time: "00:30", purpose: "resting"}
+		{time: now, purpose: "reading docs"},
+		{time: new Date(+now + 10 * 60 * 1000), purpose: "writing code"},
+		{time: new Date(+now + 20 * 60 * 1000), purpose: "debugging"},
+		{time: new Date(+now + 30 * 60 * 1000), purpose: "resting"}
 	];
 	let colors = {
 		blue: /read/i,
@@ -29,6 +30,6 @@
 
 <div class=grid>
 	{#each blocks as block}
-		<TimeBlock {...block} {colors}/>
+		<TimeBlock time={block.time} bind:purpose={block.purpose} {colors}/>
 	{/each}
 </div>

@@ -23,5 +23,5 @@
 </style>
 
 <div class=block class:unset={color === "unset"} style="background-color: {color}"></div>
-<div>{time}</div>
+<div>{time.getHours()}:{time.getMinutes().toString().padStart(2, '0')}</div>
 <input bind:value={purpose}>
