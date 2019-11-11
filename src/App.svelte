@@ -3,7 +3,7 @@
 	import { makeSwatch, makePalette } from "./palette";
 	import DayGlance from "./DayGlance.svelte";
 	import TimeBlockDayView from "./TimeBlockDayView.svelte";
-	import TimeBlockDayEditor from "./TimeBlockDayEditor.svelte";
+	import DayEditor from "./DayEditor.svelte";
 
 	let palette = "creative";
 	let startTime = "00:00";
@@ -50,4 +50,4 @@
 {/each}
 <input type=time bind:value={startTime}><button on:click={setNewStartTime}>Set Start Time</button>
 <TimeBlockDayView {blocks} palette={palettes[palette]}/>
-<TimeBlockDayEditor bind:blocks palette={palettes[palette]}/>
+<DayEditor bind:blocks palette={palettes[palette]}/>
