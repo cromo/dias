@@ -31,4 +31,5 @@
 </label>
 {/each}
 <TimeBlockDayView {blocks} palette={palettes[palette]}/>
+<DayGlance blocks={blocks.purposes} palette={palettes[palette]}/>
 <TimeBlockDayEditor bind:blocks palette={palettes[palette]}/>
