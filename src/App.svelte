@@ -2,7 +2,7 @@
 	import { newDay, adjustStartTime } from "./day";
 	import { makeSwatch, makePalette } from "./palette";
 	import DayGlance from "./DayGlance.svelte";
-	import TimeBlockDayView from "./TimeBlockDayView.svelte";
+	import DayGrid from "./DayGrid.svelte";
 	import DayEditor from "./DayEditor.svelte";
 
 	let palette = "creative";
@@ -49,5 +49,5 @@
 </label>
 {/each}
 <input type=time bind:value={startTime}><button on:click={setNewStartTime}>Set Start Time</button>
-<TimeBlockDayView {blocks} palette={palettes[palette]}/>
+<DayGrid {blocks} palette={palettes[palette]}/>
 <DayEditor bind:blocks palette={palettes[palette]}/>
