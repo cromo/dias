@@ -3,7 +3,7 @@
     export let blocks = [];
     export let palette = [];
     let times = [];
-    $: times = blocks.purposes.map((_, i) => new Date(blocks.startTime + i * 10 * 60 * 1000));
+    $: times = blocks.purposes.map((_, i) => new Date(+blocks.startTime + i * 10 * 60 * 1000));
 </script>
 
 <style>
