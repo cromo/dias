@@ -2,6 +2,8 @@
     import TimeBlockEditor from "./TimeBlockEditor.svelte";
     export let blocks = [];
     export let palette = [];
+    let times = [];
+    $: times = blocks.purposes.map((_, i) => new Date(blocks.startTime + i * 10 * 60 * 1000));
 </script>
 
 <style>
@@ -14,7 +16,7 @@
 </style>
 
 <div class=grid>
-	{#each blocks as {time, purpose}}
-		<TimeBlockEditor {time} bind:purpose colors={palette}/>
+	{#each blocks.purposes as purpose, i}
+		<TimeBlockEditor time={times[i]} bind:purpose colors={palette}/>
 	{/each}
 </div>

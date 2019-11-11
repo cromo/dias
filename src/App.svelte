@@ -24,12 +24,7 @@
 
 	function newDay(startTime) {
 		startTime = startTime || Date.now();
-		return new Array(100)
-			.fill(void 0)
-			.map((_, i) => ({
-				time: new Date(+startTime + i * 10 * 60 * 1000),
-				purpose: ""
-			}));
+		return {startTime, purposes: new Array(100).fill("")};
 	}
 </script>
 
