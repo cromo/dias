@@ -1,6 +1,6 @@
 <script>
     import { pickSwatch } from "./palette";
-    export let blocks = {};
+    export let blocks = [];
     export let palette = [];
 </script>
 
@@ -21,7 +21,7 @@
 </style>
 
 <div class=grid>
-    {#each blocks.purposes as purpose}
-        <div class=block class:unset={!pickSwatch(palette, purpose)} style={`background-color: ${pickSwatch(palette, purpose)}`}></div>
+    {#each blocks as block}
+        <div class=block class:unset={!pickSwatch(palette, block)} style={`background-color: ${pickSwatch(palette, block)}`}></div>
     {/each}
 </div>

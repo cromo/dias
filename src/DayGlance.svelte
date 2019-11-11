@@ -16,7 +16,7 @@
 </style>
 
 <div class=grid>
-    {#each blocks as purpose}
-        <div style={`background-color: ${pickSwatch(palette, purpose)}`}></div>
+    {#each blocks as block}
+        <div style={`background-color: ${pickSwatch(palette, block)}`}></div>
     {/each}
 </div>

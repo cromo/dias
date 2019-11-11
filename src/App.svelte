@@ -8,8 +8,8 @@
 	let palette = "creative";
 	let startTime = "00:00";
 
-	let blocks = newDay();
-	startTime = `${blocks.startTime.getHours().toString().padStart(2, '0')}:${blocks.startTime.getMinutes().toString().padStart(2, '0')}`;
+	let day = newDay();
+	startTime = `${day.startTime.getHours().toString().padStart(2, '0')}:${day.startTime.getMinutes().toString().padStart(2, '0')}`;
 	let palettes = {
 		creative: makePalette("Creative", [
 			makeSwatch("reading", "#1df", /read/i),
@@ -34,14 +34,14 @@
 			return;
 		}
 		const [, hours, minutes] = match;
-		const newStart = new Date(blocks.startTime);
+		const newStart = new Date(day.startTime);
 		newStart.setHours(+hours);
 		newStart.setMinutes(+minutes);
-		blocks = adjustStartTime(newStart, blocks);
+		day = adjustStartTime(newStart, day);
 	}
 </script>
 
-<DayGlance blocks={blocks.purposes} palette={palettes[palette]}/>
+<DayGlance blocks={day.purposes} palette={palettes[palette]}/>
 {#each Object.keys(palettes) as p}
 <label>
 	<input type="radio" bind:group={palette} value={p}>
@@ -49,5 +49,5 @@
 </label>
 {/each}
 <input type=time bind:value={startTime}><button on:click={setNewStartTime}>Set Start Time</button>
-<DayGrid {blocks} palette={palettes[palette]}/>
-<DayEditor bind:blocks palette={palettes[palette]}/>
+<DayGrid blocks={day.purposes} palette={palettes[palette]}/>
+<DayEditor bind:day palette={palettes[palette]}/>
