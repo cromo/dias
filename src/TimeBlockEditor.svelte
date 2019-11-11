@@ -2,7 +2,7 @@
     import * as palette from "./palette";
 
     export let colors = [];
-    export let time = "00:00";
+    export let time = new Date(0);
     export let purpose = "";
     let color = "unset";
 

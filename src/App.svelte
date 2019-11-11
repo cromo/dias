@@ -1,5 +1,5 @@
 <script>
-	import TimeBlock from "./TimeBlock.svelte";
+	import TimeBlockEditor from "./TimeBlockEditor.svelte";
 	let palette = "creative";
 
 	let blocks = newDay();
@@ -48,6 +48,6 @@
 {/each}
 <div class=grid>
 	{#each blocks as {time, purpose}}
-		<TimeBlock {time} bind:purpose colors={palettes[palette]}/>
+		<TimeBlockEditor {time} bind:purpose colors={palettes[palette]}/>
 	{/each}
 </div>
