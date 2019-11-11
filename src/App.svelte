@@ -1,4 +1,5 @@
 <script>
+	import { newDay } from "./day";
 	import { makeSwatch, makePalette } from "./palette";
 	import TimeBlockDayView from "./TimeBlockDayView.svelte";
 	import TimeBlockDayEditor from "./TimeBlockDayEditor.svelte";
@@ -21,11 +22,6 @@
 			makeSwatch("Work", "green", /work|code|debug|write/i),
 		])
 	};
-
-	function newDay(startTime) {
-		startTime = startTime || Date.now();
-		return {startTime, purposes: new Array(100).fill("")};
-	}
 </script>
 
 {#each Object.keys(palettes) as p}
