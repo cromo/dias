@@ -1,14 +1,12 @@
 <script>
+    import * as palette from "./palette";
+
     export let colors = [];
     export let time = "00:00";
     export let purpose = "";
     let color = "unset";
 
-    $: {
-        const matches = colors.map(({color: c, pattern: p}) => ({color: c, match: purpose.match(p)})).filter(x => x.match);
-        matches.sort((a, b) => a.match.index - b.match.index);
-        color = matches.length ? matches[0].color : "unset";
-    }
+    $: color = palette.pickSwatch(colors, purpose) || "unset";
 </script>
 
 <style>
