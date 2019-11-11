@@ -39,4 +39,4 @@
 </label>
 {/each}
 <TimeBlockDayView {blocks} palette={palettes[palette]}/>
-<TimeBlockDayEditor {blocks} palette={palettes[palette]}/>
+<TimeBlockDayEditor bind:blocks palette={palettes[palette]}/>
