@@ -5,3 +5,6 @@ export function pickSwatch(palette, str) {
     matches.sort((a, b) => a.match.index - b.match.index);
     return matches[0] && matches[0].color;
 }
+
+export const makeSwatch = (name, color, pattern) => ({name, color, pattern});
+export const makePalette = (name, swatches) => ({name, swatches});

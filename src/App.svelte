@@ -1,4 +1,5 @@
 <script>
+	import { makeSwatch } from "./palette";
 	import TimeBlockDayView from "./TimeBlockDayView.svelte";
 	import TimeBlockDayEditor from "./TimeBlockDayEditor.svelte";
 	let palette = "creative";
@@ -6,18 +7,18 @@
 	let blocks = newDay();
 	let palettes = {
 		creative: [
-			{color: "#1df", pattern: /read/i},
-			{color: "green", pattern: /writ/i},
-			{color: "red", pattern: /debug/i},
-			{color: "orange", pattern: /hn|hacker news/i},
-			{color: "red", pattern: /youtube|netflix/i},
-			{color: "yellow", pattern: /shopping|amazon/i},
-			{color: "gray", pattern: /work/i},
-			{color: "navy", pattern: /sleep|nap|rest/i},
+			makeSwatch("reading", "#1df", /read/i),
+			makeSwatch("writing", "green", /writ/i),
+			makeSwatch("debugging", "red", /debug/i),
+			makeSwatch("hacker news", "orange", /hn|hacker news/i),
+			makeSwatch("streaming", "red", /youtube|netflix/i),
+			makeSwatch("shopping", "yellow", /shopping|amazon/i),
+			makeSwatch("working", "gray", /work/i),
+			makeSwatch("sleeping", "navy", /sleep|nap|rest/i),
 		],
 		hnVsWork: [
-			{color: "orange", pattern: /hn|hacker news|article/i},
-			{color: "green", pattern: /work|code|debug|write/i},
+			makeSwatch("Hacker News", "orange", /hn|hacker news|article/i),
+			makeSwatch("Work", "green", /work|code|debug|write/i),
 		]
 	};
 
