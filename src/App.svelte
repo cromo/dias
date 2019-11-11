@@ -5,7 +5,7 @@
 	import DayGrid from "./DayGrid.svelte";
 	import DayEditor from "./DayEditor.svelte";
 
-	let palette = "creative";
+	let selectedPalette = "creative";
 	let startTime = "00:00";
 
 	let day = newDay();
@@ -26,6 +26,7 @@
 			makeSwatch("Work", "green", /work|code|debug|write/i),
 		])
 	};
+	$: palette = palettes[selectedPalette];
 
 	function setNewStartTime() {
 		const match = startTime.match(/0?(\d+):(\d+)/);
@@ -41,13 +42,13 @@
 	}
 </script>
 
-<DayGlance blocks={day.purposes} palette={palettes[palette]}/>
+<DayGlance blocks={day.purposes} {palette}/>
 {#each Object.keys(palettes) as p}
 <label>
-	<input type="radio" bind:group={palette} value={p}>
+	<input type="radio" bind:group={selectedPalette} value={p}>
 	{p}
 </label>
 {/each}
 <input type=time bind:value={startTime}><button on:click={setNewStartTime}>Set Start Time</button>
-<DayGrid blocks={day.purposes} palette={palettes[palette]}/>
-<DayEditor bind:day palette={palettes[palette]}/>
+<DayGrid blocks={day.purposes} {palette}/>
+<DayEditor bind:day {palette}/>
