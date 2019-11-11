@@ -1,4 +1,5 @@
 <script>
+	import TimeBlockDayView from "./TimeBlockDayView.svelte";
 	import TimeBlockEditor from "./TimeBlockEditor.svelte";
 	let palette = "creative";
 
@@ -46,6 +47,7 @@
 	{p}
 </label>
 {/each}
+<TimeBlockDayView {blocks} palette={palettes[palette]}/>
 <div class=grid>
 	{#each blocks as {time, purpose}}
 		<TimeBlockEditor {time} bind:purpose colors={palettes[palette]}/>
