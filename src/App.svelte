@@ -1,5 +1,5 @@
 <script>
-	import TimeBlock from "./TimeBlock.svelte"
+	import TimeBlock from "./TimeBlock.svelte";
 	let palette = "creative";
 
 	let blocks = newDay();
