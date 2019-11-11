@@ -1,15 +1,13 @@
 <script>
-	import { newDay, adjustStartTime } from "./day";
+	import { newDay } from "./day";
 	import { makeSwatch, makePalette } from "./palette";
 	import DayGlance from "./DayGlance.svelte";
 	import DayGrid from "./DayGrid.svelte";
 	import DayEditor from "./DayEditor.svelte";
 
 	let selectedPalette = "creative";
-	let startTime = "00:00";
 
 	let day = newDay();
-	startTime = `${day.startTime.getHours().toString().padStart(2, '0')}:${day.startTime.getMinutes().toString().padStart(2, '0')}`;
 	let palettes = {
 		creative: makePalette("Creative", [
 			makeSwatch("reading", "#1df", /read/i),
@@ -27,19 +25,6 @@
 		])
 	};
 	$: palette = palettes[selectedPalette];
-
-	function setNewStartTime() {
-		const match = startTime.match(/0?(\d+):(\d+)/);
-		if (!match) {
-			console.error("Bad input start time");
-			return;
-		}
-		const [, hours, minutes] = match;
-		const newStart = new Date(day.startTime);
-		newStart.setHours(+hours);
-		newStart.setMinutes(+minutes);
-		day = adjustStartTime(newStart, day);
-	}
 </script>
 
 <DayGlance blocks={day.purposes} {palette}/>
@@ -49,6 +34,5 @@
 	{p}
 </label>
 {/each}
-<input type=time bind:value={startTime}><button on:click={setNewStartTime}>Set Start Time</button>
 <DayGrid blocks={day.purposes} {palette}/>
 <DayEditor bind:day {palette}/>
