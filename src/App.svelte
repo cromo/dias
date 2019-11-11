@@ -20,12 +20,26 @@
 	$: palette = palettes[selectedPalette];
 </script>
 
-<DayGlance blocks={day.purposes} {palette}/>
-{#each Object.keys(palettes) as p}
-<label>
-	<input type="radio" bind:group={selectedPalette} value={p}>
-	{p}
-</label>
-{/each}
-<DayGrid blocks={day.purposes} {palette}/>
+<style>
+	heading {
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+	}
+
+	#grids {
+		padding-top: 4em;
+	}
+</style>
+
+<heading>
+	<DayGlance blocks={day.purposes} {palette}/>
+	{#each Object.keys(palettes) as p}
+		<label><input type="radio" bind:group={selectedPalette} value={p}>{p}</label>
+	{/each}
+</heading>
+<div id="grids">
+	<DayGrid blocks={day.purposes} {palette}/>
+</div>
 <DayEditor bind:day {palette}/>
