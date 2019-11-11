@@ -1,6 +1,6 @@
 <script>
 	import TimeBlockDayView from "./TimeBlockDayView.svelte";
-	import TimeBlockEditor from "./TimeBlockEditor.svelte";
+	import TimeBlockDayEditor from "./TimeBlockDayEditor.svelte";
 	let palette = "creative";
 
 	let blocks = newDay();
@@ -32,15 +32,6 @@
 	}
 </script>
 
-<style>
-	.grid {
-		display: grid;
-		grid-template-columns: 40px 40px 1fr;
-		grid-gap: 4px 4px;
-		align-items: center;
-	}
-</style>
-
 {#each Object.keys(palettes) as p}
 <label>
 	<input type="radio" bind:group={palette} value={p}>
@@ -48,8 +39,4 @@
 </label>
 {/each}
 <TimeBlockDayView {blocks} palette={palettes[palette]}/>
-<div class=grid>
-	{#each blocks as {time, purpose}}
-		<TimeBlockEditor {time} bind:purpose colors={palettes[palette]}/>
-	{/each}
-</div>
+<TimeBlockDayEditor {blocks} palette={palettes[palette]}/>
