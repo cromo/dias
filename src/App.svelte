@@ -41,6 +41,7 @@
 	}
 </script>
 
+<DayGlance blocks={blocks.purposes} palette={palettes[palette]}/>
 {#each Object.keys(palettes) as p}
 <label>
 	<input type="radio" bind:group={palette} value={p}>
@@ -49,5 +50,4 @@
 {/each}
 <input type=time bind:value={startTime}><button on:click={setNewStartTime}>Set Start Time</button>
 <TimeBlockDayView {blocks} palette={palettes[palette]}/>
-<DayGlance blocks={blocks.purposes} palette={palettes[palette]}/>
 <TimeBlockDayEditor bind:blocks palette={palettes[palette]}/>
