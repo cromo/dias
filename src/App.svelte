@@ -29,6 +29,7 @@
 	$: palette = palettes[selectedPalette];
 
 	let view = "grids";
+	let editDay = "";
 
 	function daysWithDataDescending(days) {
 		const daysWithData = Object.keys(days);
@@ -38,11 +39,12 @@
 	}
 
 	function viewAll(focus) {
-		console.log("View all with a focus on", focus);
+		view = "overview";
 	}
 
 	function edit(date) {
-		console.log("Editing", date);
+		editDay = date;
+		view = "editor";
 	}
 </script>
 
@@ -54,7 +56,7 @@
 		width: 100%;
 	}
 
-	#grids {
+	main {
 		margin-top: 4.5em;
 	}
 
@@ -75,7 +77,9 @@
 </heading>
 <main>
 	{#if view === "overview"}
-		Overview
+		{#each datesWithData as date}
+			<DayGlance blocks={days[date].purposes} {palette}/>
+		{/each}
 	{:else if view === "grids"}
 		<div id="grids">
 			{#each datesWithData as date}
@@ -90,6 +94,6 @@
 			{/each}
 		</div>
 	{:else if view === "editor"}
-		<DayEditor bind:day={days[today]} {palette}/>
+		<DayEditor bind:day={days[editDay]} {palette}/>
 	{/if}
 </main>
