@@ -1,1 +1,19 @@
-Home!
+<script>
+    import { toIsoDate } from "../day";
+    import { daysDescending } from "../stores";
+    import DayGrid from "../DayGrid.svelte";
+    import { testPalettes } from "../palette";
+</script>
+
+<div id="grids">
+    {#each $daysDescending as day}
+        <section>
+            <h1>{toIsoDate(day.startTime)}</h1>
+            <div class="day">
+                <button>‹</button>
+                <DayGrid blocks={day.purposes} palette={testPalettes[0]}/>
+                <button>›</button>
+            </div>
+        </section>
+    {/each}
+</div>
