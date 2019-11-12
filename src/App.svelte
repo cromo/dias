@@ -14,7 +14,7 @@
 	const routes = {
 		"/": Home,
 		"/overview": Overview,
-		"/edit": EditDay
+		"/edit/:date": EditDay
 	};
 
 	let palettes = testPalettes.reduce((palettes, palette) => {
