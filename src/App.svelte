@@ -28,11 +28,21 @@
 	let selectedPalette = testPalettes[0].name;
 	$: palette = palettes[selectedPalette];
 
+	let view = "grids";
+
 	function daysWithDataDescending(days) {
 		const daysWithData = Object.keys(days);
 		daysWithData.sort();
 		daysWithData.reverse();
 		return daysWithData;
+	}
+
+	function viewAll(focus) {
+		console.log("View all with a focus on", focus);
+	}
+
+	function edit(date) {
+		console.log("Editing", date);
 	}
 </script>
 
@@ -51,6 +61,10 @@
 	#grids > * + * {
 		margin-top: 1.5em;
 	}
+
+	#grids .day {
+		display: flex;
+	}
 </style>
 
 <heading>
@@ -60,12 +74,22 @@
 	{/each}
 </heading>
 <main>
-	<div id="grids">
-		{#each datesWithData as date}
-			<section>
-				<DayGrid blocks={days[date].purposes} {palette}/>
-			</section>
-		{/each}
-	</div>
-	<DayEditor bind:day={days[today]} {palette}/>
+	{#if view === "overview"}
+		Overview
+	{:else if view === "grids"}
+		<div id="grids">
+			{#each datesWithData as date}
+				<section>
+					<h1>{date}</h1>
+					<div class="day">
+						<button on:click={() => viewAll(date)}>‹</button>
+						<DayGrid blocks={days[date].purposes} {palette}/>
+						<button on:click={() => edit(date)}>›</button>
+					</div>
+				</section>
+			{/each}
+		</div>
+	{:else if view === "editor"}
+		<DayEditor bind:day={days[today]} {palette}/>
+	{/if}
 </main>
