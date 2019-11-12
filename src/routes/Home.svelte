@@ -1,6 +1,6 @@
 <script>
     import { toIsoDate } from "../day";
-    import { daysDescending } from "../stores";
+    import { daysDescending, palette } from "../stores";
     import DayGrid from "../DayGrid.svelte";
     import { testPalettes } from "../palette";
 </script>
@@ -11,7 +11,7 @@
             <h1>{toIsoDate(day.startTime)}</h1>
             <div class="day">
                 <button>‹</button>
-                <DayGrid blocks={day.purposes} palette={testPalettes[0]}/>
+                <DayGrid blocks={day.purposes} palette={$palette}/>
                 <button>›</button>
             </div>
         </section>

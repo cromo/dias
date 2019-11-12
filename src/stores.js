@@ -1,5 +1,6 @@
 import { writable, derived } from "svelte/store";
 import { newDay } from "./day";
+import { makePalette } from "./palette";
 
 export const days = writable({
     "2019-11-10": newDay(),
@@ -22,3 +23,5 @@ export const daysDescending = derived(
 		return daysWithData.map(date => $days[date]);
     }
 );
+
+export const palette = writable(makePalette("None", []));
