@@ -2,10 +2,6 @@
 	import { newDay, toIsoDate } from "./day";
 	import { makeSwatch, makePalette, testPalettes } from "./palette";
 	import { days, daysDescending } from "./stores";
-	import DayGlance from "./DayGlance.svelte";
-	import DayGrid from "./DayGrid.svelte";
-	import DayEditor from "./DayEditor.svelte";
-
 	import Router from "svelte-spa-router";
 	import EditDay from "./routes/EditDay.svelte";
 	import Home from "./routes/Home.svelte";
