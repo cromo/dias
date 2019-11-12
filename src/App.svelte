@@ -6,6 +6,17 @@
 	import DayGrid from "./DayGrid.svelte";
 	import DayEditor from "./DayEditor.svelte";
 
+	import Router from "svelte-spa-router";
+	import EditDay from "./routes/EditDay.svelte";
+	import Home from "./routes/Home.svelte";
+	import Overview from "./routes/Overview.svelte";
+
+	const routes = {
+		"/": Home,
+		"/overview": Overview,
+		"/edit": EditDay
+	};
+
 	let palettes = testPalettes.reduce((palettes, palette) => {
 		palettes[palette.name] = palette;
 		return palettes;
@@ -53,6 +64,7 @@
 	{/each}
 </heading>
 <main>
+	<Router {routes}/>
 	<div id="#grids">
 		{#each $daysDescending as day}
 			<section>
