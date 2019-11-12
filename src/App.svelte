@@ -55,12 +55,13 @@
 		<label><input type="radio" bind:group={selectedPalette} value={p}>{p}</label>
 	{/each}
 </heading>
-<div id="grids">
-	{#each datesWithData as date}
-		<div>
-			<DayGrid blocks={days[date].purposes} {palette}/>
-		</div>
-	{/each}
-	<!-- <DayGrid blocks={day.purposes} {palette}/> -->
-</div>
-<DayEditor bind:day={days[today]} {palette}/>
+<main>
+	<div id="grids">
+		{#each datesWithData as date}
+			<section>
+				<DayGrid blocks={days[date].purposes} {palette}/>
+			</section>
+		{/each}
+	</div>
+	<DayEditor bind:day={days[today]} {palette}/>
+</main>
