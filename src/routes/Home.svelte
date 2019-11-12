@@ -2,7 +2,6 @@
     import { toIsoDate } from "../day";
     import { daysDescending, palette } from "../stores";
     import DayGrid from "../DayGrid.svelte";
-    import { testPalettes } from "../palette";
 </script>
 
 <div id="grids">
