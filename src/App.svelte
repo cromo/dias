@@ -13,6 +13,10 @@
 	if (!days.hasOwnProperty(today)) {
 		days[today] = newDay();
 	}
+	const randomActivity = () => ["hn", "read", "shopping", "youtube", "work", "", "", ""][Math.floor(Math.random() * 8)];
+	days["2019-11-10"].purposes = days["2019-11-10"].purposes.map(randomActivity);
+	days["2019-11-09"].purposes = days["2019-11-09"].purposes.map(randomActivity);
+	days[today].purposes = days[today].purposes.map(randomActivity);
 
 	let datesWithData = daysWithDataDescending(days);
 	$: datesWithData = daysWithDataDescending(days);
