@@ -6,17 +6,18 @@
 <style>
   .grid {
     display: grid;
-    grid-template-columns: 40px 1fr 10fr;
+    grid-template-columns: 40px 1fr 1fr 5fr;
     grid-gap: 4px 4px;
   }
 </style>
 
-{palette.name}
+<h1>{palette.name}</h1>
 
 <div class="grid">
   {#each palette.swatches as swatch}
     <ColorBlock color={swatch.color}/>
-    <div>{swatch.name}</div>
-    <div>{swatch.pattern}</div>
+    <input bind:value={swatch.color}/>
+    <input bind:value={swatch.name}/>
+    <input bind:value={swatch.pattern}/>
   {/each}
 </div>
