@@ -4,6 +4,26 @@
     import DayGrid from "../components/DayGrid.svelte";
 </script>
 
+<style>
+    h1 {
+        text-align: center;
+    }
+    .day {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+    .day > a {
+        flex-grow: 1;
+        font-size: 12em;
+        text-align: center;
+        vertical-align: middle;
+    }
+    .day > a:hover {
+        text-decoration: none;
+    }
+</style>
+
 <div id="grids">
     {#each $daysDescending as day}
         <section>
