@@ -1,4 +1,5 @@
 <script>
+  import { compilePalette } from "../palette";
   import ColorBlock from "./ColorBlock.svelte";
   import TimeBlockEditor from "./TimeBlockEditor.svelte";
   export let palette = {name: "", swatches: []};
@@ -29,7 +30,7 @@
 <h1>{palette.name}</h1>
 
 <div class="tester">
-  <TimeBlockEditor colors={palette}/>
+  <TimeBlockEditor colors={compilePalette(palette)}/>
 </div>
 
 <div class="grid">

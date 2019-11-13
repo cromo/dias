@@ -8,3 +8,20 @@ export function pickSwatch(palette, str) {
 
 export const makeSwatch = (name, color, pattern) => ({name, color, pattern});
 export const makePalette = (name, swatches) => ({name, swatches});
+export const compilePalette = ({name, swatches}) => ({
+    name,
+    swatches: swatches.map(({name, color, pattern}) => ({
+        name,
+        color,
+        pattern: regexFromString(pattern)
+    }))
+});
+
+function regexFromString(s) {
+    const match = s.match(/^\/(.*)\/([imsu]*)$/);
+    if (!match) {
+        return new RegExp(s);
+    }
+    const [, pattern, flags] = match;
+    return new RegExp(pattern, flags);
+}
