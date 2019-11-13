@@ -1,7 +1,6 @@
 <script>
-	import { newDay, toIsoDate } from "./day";
-	import { makeSwatch, makePalette, testPalettes } from "./palette";
-	import { days, daysDescending, palette } from "./stores";
+	import { testPalettes } from "./palette";
+	import { palette } from "./stores";
 	import Router from "svelte-spa-router";
 	import EditDay from "./routes/EditDay.svelte";
 	import Home from "./routes/Home.svelte";
