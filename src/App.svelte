@@ -44,9 +44,11 @@
 </style>
 
 <heading>
+	<a href="#/palette/new">+</a>
 	{#each Object.keys(palettes) as p}
 		<label><input type="radio" bind:group={selectedPalette} value={p}>{p}</label>
 	{/each}
+	<a href="#/palette/{encodeURIComponent(selectedPalette)}">🖉</a>
 </heading>
 <main>
 	<Router {routes}/>
