@@ -5,4 +5,4 @@
   let name = decodeURIComponent(params.name);
 </script>
 
-<PaletteEditor palette={$rawPalettes[name]}/>
+<PaletteEditor bind:palette={$rawPalettes[name]}/>
