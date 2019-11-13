@@ -1,5 +1,6 @@
 <script>
     import { pickSwatch } from "../palette";
+    import ColorBlock from "./ColorBlock.svelte";
     export let blocks = [];
     export let palette = [];
 </script>
@@ -9,19 +10,10 @@
         display: grid;
         grid-template-columns: repeat(10, 40px);
     }
-
-    .block {
-        width: 40px;
-        height: 40px;
-    }
-
-    .unset {
-        outline: 2px solid gray;
-    }
 </style>
 
 <div class=grid>
     {#each blocks as block}
-        <div class=block class:unset={!pickSwatch(palette, block)} style={`background-color: ${pickSwatch(palette, block)}`}></div>
+        <ColorBlock color={pickSwatch(palette, block) || "unset"}/>
     {/each}
 </div>
