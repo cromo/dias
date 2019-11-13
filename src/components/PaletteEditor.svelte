@@ -1,4 +1,5 @@
 <script>
+  import ColorBlock from "./ColorBlock.svelte";
   export let palette = {name: "", swatches: []};
 </script>
 
@@ -14,7 +15,7 @@
 
 <div class="grid">
   {#each palette.swatches as swatch}
-    <div>{swatch.color}</div>
+    <ColorBlock color={swatch.color}/>
     <div>{swatch.name}</div>
     <div>{swatch.pattern}</div>
   {/each}
