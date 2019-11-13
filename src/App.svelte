@@ -1,11 +1,21 @@
 <script>
+	import localforage from "localforage";
 	import { testPalettes } from "./palette";
-	import { palette } from "./stores";
+	import { days, palette } from "./stores";
 	import Router from "svelte-spa-router";
 	import EditDay from "./routes/EditDay.svelte";
 	import Home from "./routes/Home.svelte";
 	import Overview from "./routes/Overview.svelte";
 
+	localforage.getItem("days")
+		.then(savedDays => {
+			if (savedDays) {
+				$days = savedDays;
+			}
+		})
+		.catch(console.error);
+	$: localforage.setItem("days", $days)
+		.catch(console.error);
 	const routes = {
 		"/": Home,
 		"/overview": Overview,
