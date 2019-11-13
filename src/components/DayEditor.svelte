@@ -1,5 +1,5 @@
 <script>
-    import { adjustStartTime } from "./day";
+    import { adjustStartTime } from "../day";
     import TimeBlockEditor from "./TimeBlockEditor.svelte";
     export let day = {};
     export let palette = [];

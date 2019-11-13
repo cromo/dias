@@ -1,7 +1,7 @@
 <script>
     import { toIsoDate } from "../day";
     import { days, palette } from "../stores";
-    import DayEditor from "../DayEditor.svelte";
+    import DayEditor from "../components/DayEditor.svelte";
 
     export let params = {};
 </script>

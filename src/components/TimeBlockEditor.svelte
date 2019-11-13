@@ -1,5 +1,5 @@
 <script>
-    import * as palette from "./palette";
+    import * as palette from "../palette";
 
     export let colors = [];
     export let time = new Date(0);

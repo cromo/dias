@@ -1,6 +1,6 @@
 <script>
     import { daysDescending, palette } from "../stores";
-    import DayGlance from "../DayGlance.svelte";
+    import DayGlance from "../components/DayGlance.svelte";
 </script>
 
 {#each $daysDescending as day}

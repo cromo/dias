@@ -1,5 +1,5 @@
 <script>
-    import { pickSwatch } from "./palette";
+    import { pickSwatch } from "../palette";
     export let blocks = [];
     export let palette = [];
 </script>
