@@ -18,9 +18,19 @@ export const compilePalette = ({name, swatches}) => ({
 });
 
 function regexFromString(s) {
+    // See if the string is formatted like a regex literal.
     const match = s.match(/^\/(.*)\/([imsu]*)$/);
     if (!match) {
-        return new RegExp(s);
+        // Interpret the string as matching individual literal words. This means
+        // escaping all special characters and sticking a word boundary marker
+        // on each word.
+        const literalWords = s.trim()
+            .split(/\s+/)
+            .map(word => word
+                .replace(/[\\^$*+?.()|{}[\]]/g, "\\$&")
+                .replace(/^|$/g, "\\b"))
+            .join("|");
+        return new RegExp(literalWords);
     }
     const [, pattern, flags] = match;
     return new RegExp(pattern, flags);
