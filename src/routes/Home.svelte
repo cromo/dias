@@ -1,6 +1,6 @@
 <script>
     import { toIsoDate } from "../day";
-    import { daysDescending, palette } from "../stores";
+    import { days, daysDescending, palette } from "../stores";
     import DayGrid from "../components/DayGrid.svelte";
 </script>
 
@@ -25,6 +25,9 @@
 </style>
 
 <div id="grids">
+    {#if !$days.hasOwnProperty(toIsoDate(new Date()))}
+        <h1><a href="#/edit/{toIsoDate(new Date())}">Start Today</a></h1>
+    {/if}
     {#each $daysDescending as day}
         <section>
             <h1>{toIsoDate(day.startTime)}</h1>
