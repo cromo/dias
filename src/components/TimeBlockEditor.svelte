@@ -1,4 +1,5 @@
 <script>
+    import { now } from "../stores";
     import * as palette from "../palette";
 
     export let colors = [];
@@ -18,8 +19,12 @@
     .unset {
         outline: 2px solid gray;
     }
+
+    .current {
+        background-color: lightgray;
+    }
 </style>
 
 <div class=block class:unset={color === "unset"} style="background-color: {color}"></div>
-<div>{time.getHours()}:{time.getMinutes().toString().padStart(2, '0')}</div>
+<div class:current={+time <= +$now && +$now < +time + 10 * 60 * 1000}>{time.getHours()}:{time.getMinutes().toString().padStart(2, '0')}</div>
 <input bind:value={purpose}>

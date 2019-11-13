@@ -1,4 +1,4 @@
-import { writable, derived } from "svelte/store";
+import { writable, derived, readable } from "svelte/store";
 import { newDay } from "./day";
 import { makePalette } from "./palette";
 
@@ -15,3 +15,8 @@ export const daysDescending = derived(
 );
 
 export const palette = writable(makePalette("None", []));
+
+export const now = readable(new Date(), set => {
+    const interval = setInterval(() => set(new Date()), 1000);
+    return () => clearInterval(interval);
+});
