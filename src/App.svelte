@@ -1,7 +1,6 @@
 <script>
 	import localforage from "localforage";
-	import { testPalettes } from "./palette";
-	import { days, palette } from "./stores";
+	import { days, palettes, sortedPalettes, palette } from "./stores";
 	import Router from "svelte-spa-router";
 	import EditDay from "./routes/EditDay.svelte";
 	import Home from "./routes/Home.svelte";
@@ -16,18 +15,17 @@
 		.catch(console.error);
 	$: localforage.setItem("days", $days)
 		.catch(console.error);
+
 	const routes = {
 		"/": Home,
 		"/overview": Overview,
 		"/edit/:date": EditDay
 	};
 
-	let palettes = testPalettes.reduce((palettes, palette) => {
-		palettes[palette.name] = palette;
-		return palettes;
-	},{});
-	let selectedPalette = testPalettes[0].name;
-	$: $palette = palettes[selectedPalette];
+	let selectedPalette = "";
+	$: if ($palettes[selectedPalette]) {
+		$palette = $palettes[selectedPalette];
+	}
 </script>
 
 <style>
@@ -45,8 +43,8 @@
 
 <heading>
 	<a href="#/palette/new">+</a>
-	{#each Object.keys(palettes) as p}
-		<label><input type="radio" bind:group={selectedPalette} value={p}>{p}</label>
+	{#each $sortedPalettes as p}
+		<label><input type="radio" bind:group={selectedPalette} value={p.name}>{p.name}</label>
 	{/each}
 	<a href="#/palette/{encodeURIComponent(selectedPalette)}">🖉</a>
 </heading>
