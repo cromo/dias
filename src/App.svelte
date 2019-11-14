@@ -78,13 +78,12 @@
 	{/if}
 	<span>Do It And See</span>
 	<span class=spreader></span>
-	<a href="#/palette/new">+</a>
+	<a href="#/palette">List</a>
 	<select name="palette" bind:value={selectedPalette}>
 		{#each $sortedPalettes as p}
 			<option value={p.index}>{p.name}</option>
 		{/each}
 	</select>
-	<a href="#/palette/{$palette.index}">🖉</a>
 </heading>
 <main>
 	<Router {routes}/>
