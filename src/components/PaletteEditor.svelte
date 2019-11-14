@@ -4,7 +4,7 @@
   import TimeBlockEditor from "./TimeBlockEditor.svelte";
   export let palette = {name: "", swatches: []};
 
-  const addSwatch = () => palette.swatches = [...palette.swatches, makeSwatch("", "", "")]
+  const addSwatch = () => palette.swatches = [...palette.swatches, makeSwatch("", "", "")];
 </script>
 
 <style>
