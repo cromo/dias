@@ -5,6 +5,10 @@
   export let palette = {name: "", swatches: []};
 
   const addSwatch = () => palette.swatches = [...palette.swatches, makeSwatch("", "", "")];
+  const remove = i => palette.swatches = [
+    ...palette.swatches.slice(0, i),
+    ...palette.swatches.slice(i + 1)
+  ];
 </script>
 
 <style>
@@ -16,7 +20,7 @@
 
   .grid {
     display: grid;
-    grid-template-columns: 40px 1fr 1fr 5fr;
+    grid-template-columns: 40px 40px 1fr 1fr 5fr;
     grid-gap: 4px 4px;
     align-items: center;
   }
@@ -42,7 +46,8 @@
   </div>
   
   <div class="grid">
-    {#each palette.swatches as swatch}
+    {#each palette.swatches as swatch, i}
+      <button on:click={() => remove(i)}>❌</button>
       <ColorBlock color={swatch.color}/>
       <input bind:value={swatch.color}/>
       <input bind:value={swatch.name}/>
