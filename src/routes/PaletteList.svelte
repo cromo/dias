@@ -1,6 +1,13 @@
 <script>
-    import { sortedPalettes } from "../stores";
+    import { rawPalettes, sortedPalettes } from "../stores";
     import ColorBlock from "../components/ColorBlock.svelte";
+
+    function deletePalette(index) {
+        $rawPalettes = [
+            ...$rawPalettes.slice(0, index),
+            ...$rawPalettes.slice(index + 1)
+        ];
+    }
 </script>
 
 <style>
@@ -22,6 +29,7 @@
 
 {#each $sortedPalettes as palette}
     <section>
+        <button on:click="{() => deletePalette(palette.index)}">❌</button>
         <h1><a href="#/palette/{palette.index}">{palette.name}</a></h1>
         <div class=swatches>
             {#each palette.swatches as swatch}
