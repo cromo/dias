@@ -58,9 +58,11 @@
 
 <heading>
 	<a href="#/palette/new">+</a>
-	{#each $sortedPalettes as p}
-		<label><input type="radio" bind:group={selectedPalette} value={p.name}>{p.name}</label>
-	{/each}
+	<select name="palette" bind:value={selectedPalette}>
+		{#each $sortedPalettes as p}
+			<option value={p.name}>{p.name}</option>
+		{/each}
+	</select>
 	<a href="#/palette/{$palette.index}">🖉</a>
 </heading>
 <main>
