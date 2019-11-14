@@ -12,6 +12,7 @@
 	import EditDay from "./routes/EditDay.svelte";
 	import Home from "./routes/Home.svelte";
 	import Overview from "./routes/Overview.svelte";
+	import PaletteList from "./routes/PaletteList.svelte";
 	import EditPalette from "./routes/EditPalette.svelte";
 
 	localforage.getItem("days")
@@ -35,6 +36,7 @@
 		"/": Home,
 		"/overview": Overview,
 		"/edit/:date": EditDay,
+		"/palette": PaletteList,
 		"/palette/:index": EditPalette
 	};
 
