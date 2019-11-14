@@ -27,6 +27,7 @@
     }
 </style>
 
+<a href="#/palette/new">+ Add New Palette</a>
 {#each $sortedPalettes as palette}
     <section>
         <button on:click="{() => deletePalette(palette.index)}">❌</button>
