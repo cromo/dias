@@ -35,7 +35,7 @@
 </style>
 
 <section>
-  <h1>{palette.name}</h1>
+  <h1><input bind:value={palette.name}/></h1>
   
   <div class="tester">
     <TimeBlockEditor colors={compilePalette(palette)}/>
