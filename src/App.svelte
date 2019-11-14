@@ -8,6 +8,7 @@
 		palette
 		} from "./stores";
 	import Router from "svelte-spa-router";
+	import { location, pop } from "svelte-spa-router";
 	import EditDay from "./routes/EditDay.svelte";
 	import Home from "./routes/Home.svelte";
 	import Overview from "./routes/Overview.svelte";
@@ -49,6 +50,17 @@
 		top: 0px;
 		left: 0px;
 		width: 100%;
+		background: white;
+		display: flex;
+		align-items: baseline;
+	}
+
+	heading > .spreader {
+		flex-grow: 1;
+	}
+
+	heading > * + * {
+		margin-left: 1.04em;
 	}
 
 	main {
@@ -57,6 +69,11 @@
 </style>
 
 <heading>
+	{#if $location !== "/"}
+		<button on:click={pop}>‹</button>
+	{/if}
+	<span>Do It And See</span>
+	<span class=spreader></span>
 	<a href="#/palette/new">+</a>
 	<select name="palette" bind:value={selectedPalette}>
 		{#each $sortedPalettes as p}
