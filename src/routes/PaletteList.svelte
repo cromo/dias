@@ -4,6 +4,16 @@
 </script>
 
 <style>
+    section {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+    }
+
+    section > * + * {
+        margin-left: 1.04em;
+    }
+
     .swatches {
         display: flex;
         flex-wrap: wrap;
