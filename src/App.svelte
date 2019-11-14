@@ -38,9 +38,11 @@
 		"/palette/:index": EditPalette
 	};
 
-	let selectedPalette = "";
-	$: if ($palettes[selectedPalette]) {
-		$palette = $palettes[selectedPalette];
+	let selectedPalette = 0;
+	$: if (selectedPalette < Object.keys($palettes).length) {
+		$palette = Object
+			.values($palettes)
+			.find(p => p.index === selectedPalette);
 	}
 </script>
 
@@ -77,7 +79,7 @@
 	<a href="#/palette/new">+</a>
 	<select name="palette" bind:value={selectedPalette}>
 		{#each $sortedPalettes as p}
-			<option value={p.name}>{p.name}</option>
+			<option value={p.index}>{p.name}</option>
 		{/each}
 	</select>
 	<a href="#/palette/{$palette.index}">🖉</a>
