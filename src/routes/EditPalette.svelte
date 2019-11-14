@@ -2,7 +2,7 @@
   import { rawPalettes } from "../stores";
   import PaletteEditor from "../components/PaletteEditor.svelte";
   export let params = {};
-  let name = decodeURIComponent(params.name);
+  let index = params.index;
 </script>
 
-<PaletteEditor bind:palette={$rawPalettes[name]}/>
+<PaletteEditor bind:palette={$rawPalettes[index]}/>

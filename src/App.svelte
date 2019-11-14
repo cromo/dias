@@ -21,7 +21,7 @@
 		"/": Home,
 		"/overview": Overview,
 		"/edit/:date": EditDay,
-		"/palette/:name": EditPalette
+		"/palette/:index": EditPalette
 	};
 
 	let selectedPalette = "";
@@ -48,7 +48,7 @@
 	{#each $sortedPalettes as p}
 		<label><input type="radio" bind:group={selectedPalette} value={p.name}>{p.name}</label>
 	{/each}
-	<a href="#/palette/{encodeURIComponent(selectedPalette)}">🖉</a>
+	<a href="#/palette/{$palette.index}">🖉</a>
 </heading>
 <main>
 	<Router {routes}/>

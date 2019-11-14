@@ -13,8 +13,8 @@ export const daysDescending = derived(
     }
 );
 
-export const rawPalettes = writable({
-    "Creative": makePalette("Creative", [
+export const rawPalettes = writable([
+    makePalette("Creative", [
         makeSwatch("reading", "#1df", "/read/i"),
         makeSwatch("writing", "green", "/writ/i"),
         makeSwatch("debugging", "red", "/debug/i"),
@@ -24,22 +24,19 @@ export const rawPalettes = writable({
         makeSwatch("working", "gray", "/work/i"),
         makeSwatch("sleeping", "navy", "/sleep|nap|rest/i"),
     ]),
-    "HN vs. Work": makePalette("HN vs. Work", [
+    makePalette("HN vs. Work", [
         makeSwatch("Hacker News", "orange", "/hn|hacker news|article/i"),
         makeSwatch("Work", "green", "/work|code|debug|write/i"),
     ])
-});
+]);
 
 export const palettes = derived(
     rawPalettes,
-    $rawPalettes => {
-        return Object
-            .keys($rawPalettes)
-            .reduce((palettes, paletteName) => {
-                palettes[paletteName] = compilePalette($rawPalettes[paletteName]);
-                return palettes;
-            }, {});
-    }
+    $rawPalettes => $rawPalettes.reduce((palettes, palette, i) => {
+            palettes[palette.name] = compilePalette(palette);
+            palettes[palette.name].index = i;
+            return palettes;
+        }, {})
 );
 
 // Provides an array of the palettes sorted by name, primarily for display
