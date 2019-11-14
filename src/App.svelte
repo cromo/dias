@@ -1,6 +1,12 @@
 <script>
 	import localforage from "localforage";
-	import { days, palettes, sortedPalettes, palette } from "./stores";
+	import {
+		days,
+		rawPalettes,
+		palettes,
+		sortedPalettes,
+		palette
+		} from "./stores";
 	import Router from "svelte-spa-router";
 	import EditDay from "./routes/EditDay.svelte";
 	import Home from "./routes/Home.svelte";
@@ -12,9 +18,16 @@
 			if (savedDays) {
 				$days = savedDays;
 			}
-		})
-		.catch(console.error);
+		}).catch(console.error);
 	$: localforage.setItem("days", $days)
+		.catch(console.error);
+	localforage.getItem("palettes")
+		.then(savedPalettes => {
+			if (savedPalettes) {
+				$rawPalettes = savedPalettes;
+			}
+		}).catch(console.error);
+	$: localforage.setItem("palettes", $rawPalettes)
 		.catch(console.error);
 
 	const routes = {
