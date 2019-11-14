@@ -78,7 +78,7 @@
 	{/if}
 	<span>Do It And See</span>
 	<span class=spreader></span>
-	<a href="#/palette">List</a>
+	<a href="#/palette">Pallets:</a>
 	<select name="palette" bind:value={selectedPalette}>
 		{#each $sortedPalettes as p}
 			<option value={p.index}>{p.name}</option>
