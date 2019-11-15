@@ -73,7 +73,7 @@
 	}
 
 	main {
-		margin-top: 4.5em;
+		margin-top: 3em;
 	}
 </style>
 
