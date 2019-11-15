@@ -57,6 +57,7 @@
 		background: white;
 		display: flex;
 		align-items: baseline;
+		border-bottom: 1px solid gray;
 	}
 
 	heading > .spreader {
@@ -65,6 +66,10 @@
 
 	heading > * + * {
 		margin-left: 1.04em;
+	}
+	
+	heading > button, heading > select {
+		margin-bottom: 0px;
 	}
 
 	main {
