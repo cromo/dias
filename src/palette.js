@@ -33,5 +33,9 @@ function regexFromString(s) {
         return new RegExp(literalWords);
     }
     const [, pattern, flags] = match;
-    return new RegExp(pattern, flags);
+    try {
+        return new RegExp(pattern, flags);
+    } catch {
+        return new RegExp(s);
+    }
 }
