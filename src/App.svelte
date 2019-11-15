@@ -74,6 +74,7 @@
 
 	main {
 		margin-top: 3em;
+		margin-bottom: 1.5em;
 	}
 </style>
 
