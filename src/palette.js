@@ -26,8 +26,7 @@ function regexFromString(s) {
         // on each word.
         const literalWords = s.trim()
             .split(/\s+/)
-            .map(word => word
-                .replace(/[\\^$*+?.()|{}[\]]/g, "\\$&")
+            .map(word => escapeRegex(word)
                 .replace(/^|$/g, "\\b"))
             .join("|");
         return new RegExp(literalWords);
@@ -36,6 +35,10 @@ function regexFromString(s) {
     try {
         return new RegExp(pattern, flags);
     } catch {
-        return new RegExp(s);
+        return new RegExp(escapeRegex(s));
     }
+}
+
+function escapeRegex(s) {
+    return s.replace(/[\\^$*+?.()|{}[\]]/g, "\\$&");
 }
