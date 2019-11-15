@@ -32,11 +32,11 @@ export const rawPalettes = writable([
 
 export const palettes = derived(
     rawPalettes,
-    $rawPalettes => $rawPalettes.reduce((palettes, palette, i) => {
-            palettes[palette.name] = compilePalette(palette);
-            palettes[palette.name].index = i;
-            return palettes;
-        }, {})
+    $rawPalettes => $rawPalettes.map((palette, i) => {
+            palette = compilePalette(palette);
+            palette.index = i;
+            return palette;
+        })
 );
 
 // Provides an array of the palettes sorted by name, primarily for display
@@ -44,15 +44,15 @@ export const palettes = derived(
 export const sortedPalettes = derived(
     palettes,
     $palettes => {
-        const palettesByName = Object
-            .values($palettes)
-            .reduce((acc, palette) => {
-                acc[palette.name] = palette;
-                return acc;
-            }, {});
-        const names = Object.keys(palettesByName);
-        names.sort();
-        return names.map(name => palettesByName[name]);
+        const sortedByName = [...$palettes];
+        sortedByName.sort((a, b) => {
+            const nameA = a.name.toLocaleLowerCase();
+            const nameB = b.name.toLocaleLowerCase();
+            return nameA < nameB ? -1 :
+                nameB < nameA ? 1 :
+                0;
+        });
+        return sortedByName;
     }
 );
 

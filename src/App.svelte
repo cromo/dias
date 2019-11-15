@@ -41,10 +41,8 @@
 	};
 
 	let selectedPalette = 0;
-	$: if (selectedPalette < Object.keys($palettes).length) {
-		$palette = Object
-			.values($palettes)
-			.find(p => p.index === selectedPalette);
+	$: if (selectedPalette < $palettes.length) {
+		$palette = $palettes[selectedPalette];
 	}
 </script>
 
