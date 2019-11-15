@@ -31,7 +31,7 @@
 {#each $sortedPalettes as palette}
     <section>
         <button on:click="{() => deletePalette(palette.index)}">❌</button>
-        <h1><a href="#/palette/{palette.index}">{palette.name}</a></h1>
+        <h1><a href="#/palette/{palette.index}">{palette.name ? palette.name : `Palette ${palette.index}`}</a></h1>
         <div class=swatches>
             {#each palette.swatches as swatch}
                 <ColorBlock color={swatch.color}/>
