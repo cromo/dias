@@ -12,4 +12,4 @@
     outline: 2px solid gray;
   }
 </style>
-<div class:unset={color === "unset"} style="background-color: {color}"></div>
+<div class:unset={color === "unset"} style="background: {color}"></div>
