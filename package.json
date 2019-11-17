@@ -1,6 +1,12 @@
 {
-  "name": "svelte-app",
-  "version": "1.0.0",
+  "name": "do-it-and-see",
+  "version": "0.1.0",
+  "description": "A personal time tracking webapp",
+  "keywords": ["time-tracking", "app", "webapp", "svelte-3"],
+  "license": "MIT",
+  "repository": "github:cromo/dias",
+  "bugs": "https://github.com/cromo/dias/issues",
+  "author": "Cristián Romo",
   "devDependencies": {
     "localforage": "^1.7.3",
     "rollup": "^1.12.0",
