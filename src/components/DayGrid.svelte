@@ -7,8 +7,10 @@
 
 <style>
     .grid {
-        display: grid;
-        grid-template-columns: repeat(10, 40px);
+        max-width: 400px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 </style>
 
