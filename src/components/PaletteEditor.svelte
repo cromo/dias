@@ -25,6 +25,10 @@
     align-items: center;
   }
 
+  h1, input {
+    min-width: 5ch;
+  }
+
   .tester {
     width: 80%;
     display: grid;

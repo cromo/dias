@@ -15,6 +15,10 @@
     .current {
         background-color: lightgray;
     }
+
+    input {
+        min-width: 8ch;
+    }
 </style>
 
 <ColorBlock {color}/>
